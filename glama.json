@@ -1,0 +1,7 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "name": "capabilitymap-nexus",
+  "description": "Anti-Hallucination GitHub Capability Router & Commercial MCP Gateway indexing 666 manifest-verified repositories with 96.4% token reduction.",
+  "url": "https://many-temperatures-optimum-radiation.trycloudflare.com/api/mcp",
+  "homepage": "https://many-temperatures-optimum-radiation.trycloudflare.com"
+}
