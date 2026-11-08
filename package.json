@@ -1,6 +1,6 @@
 {
   "name": "capabilitymap-nexus-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CapabilityMap Nexus v1.0 \u2014 Verified GitHub Capability Router & Commercial MCP Gateway (666 Repos, 96.4% Token Savings)",
   "homepage": "https://many-temperatures-optimum-radiation.trycloudflare.com",
   "repository": {
@@ -18,5 +18,9 @@
     "claude",
     "cursor"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "capabilitymap-nexus-mcp": "./bin/cli.mjs"
+  }
 }

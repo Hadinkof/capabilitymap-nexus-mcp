@@ -1,3 +1,14 @@
 startCommand:
-  type: http
-  url: https://many-temperatures-optimum-radiation.trycloudflare.com/api/mcp
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      nexusApiKey:
+        type: string
+        description: Optional Nexus Pro or Free Trial API Key (get 100 free calls at https://many-temperatures-optimum-radiation.trycloudflare.com/#pricing)
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', 'github:Hadinkof/capabilitymap-nexus-mcp'],
+      env: config.nexusApiKey ? { NEXUS_API_KEY: config.nexusApiKey } : {}
+    })
