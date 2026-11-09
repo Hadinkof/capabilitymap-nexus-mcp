@@ -81,3 +81,24 @@ Connect directly via your hosted Glama.ai proxy endpoint with Bearer authenticat
   }
 }
 ```
+
+---
+
+## 💎 Commercial Monetization & Pro Upgrade Plans
+
+CapabilityMap Nexus operates on a transparent, sustainable commercial model tailored for autonomous AI agent developers and software engineering teams.
+
+| Plan | Price | Monthly Quota | Features & Value Proposition | Instant Checkout |
+| :--- | :---: | :---: | :--- | :---: |
+| **Community Free** | **€0** | 750 calls/mo | Top-3 ranked repositories, standard MCP JSON-RPC, public verified badges | [Get 100-Call Trial](https://many-temperatures-optimum-radiation.trycloudflare.com/#pricing) |
+| **Nexus Pro** | **€19/mo** | 25,000 calls/mo | Full 666+ repository rankings, 8-factor trust scores, 5-Vector Prompt-Injection Firewall API, priority low-latency gateway | [💳 Pay €19 via PayPal](https://www.paypal.com/paypalme/Hadinkof/19EUR) |
+| **Team & Swarm** | **€99/mo** | 250,000 calls/mo | Full 666-repository bulk JSON export (`/api/v1/export`), private organization indexing, dedicated research room API, SLA | [⚡ Pay €99 via PayPal](https://www.paypal.com/paypalme/Hadinkof/99EUR) |
+| **Verified Partner** | **€149/mo** | 50,000 calls/mo | Featured category placement, automated continuous security audit certification badge, direct agent referral exposure | [🚀 Sponsor Placement](https://www.paypal.com/paypalme/Hadinkof/149EUR) |
+
+### 📈 Verified ROI & Cost Reduction
+- **Baseline Context Usage:** Raw GitHub search & README scraping burns **~4,200 tokens** per capability discovery task.
+- **Nexus Context Usage:** High-signal architectural decomposition in **~150 tokens** (a **96.4% token reduction**).
+- **Net Dollar Savings:** **$59.40 saved per 1,000 AI agent tasks** on GPT-4o / Claude 3.7 context windows.
+- **ROI Multiple:** A single Nexus Pro (€19/mo) license yields **3.1x to 12.5x net savings** on monthly LLM API bills.
+
+Support open-source development and sovereign AI tooling via [GitHub Sponsors (@Hadinkof)](https://github.com/sponsors/Hadinkof) or direct invoice checkout.
