@@ -24,7 +24,7 @@
     "capabilitymap-nexus-mcp": "./bin/cli.mjs"
   },
   "scripts": {
-    "test": "node --test tests/cli.test.mjs",
+    "test": "NEXUS_MCP_URL='http://127.0.0.1:3088/api/mcp' node --test tests/cli.test.mjs",
     "start": "node ./bin/cli.mjs"
   }
 }

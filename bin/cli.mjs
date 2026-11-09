@@ -17,6 +17,7 @@ const PUBLIC_URL = 'https://many-temperatures-optimum-radiation.trycloudflare.co
 const LOCAL_URL = 'http://127.0.0.1:3088/api/mcp';
 const BASE_URL = process.env.NEXUS_MCP_URL || PUBLIC_URL;
 const API_KEY = process.env.NEXUS_API_KEY || '';
+const DEFAULT_TIMEOUT_MS = parseInt(process.env.NEXUS_TIMEOUT_MS || '10000', 10);
 
 const args = process.argv.slice(2);
 
@@ -72,7 +73,8 @@ async function postJsonRpc(payload) {
       const res = await fetch(url, {
         method: 'POST',
         headers,
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(DEFAULT_TIMEOUT_MS)
       });
       if (!res.ok) {
         throw new Error(`HTTP ${res.status} from ${url}`);
