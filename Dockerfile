@@ -13,5 +13,5 @@ COPY bin ./bin
 RUN chmod +x ./bin/cli.mjs && chown -R node:node /app
 USER node
 
-ENV NEXUS_MCP_ENDPOINT="https://many-temperatures-optimum-radiation.trycloudflare.com/mcp"
+ENV NEXUS_MCP_ENDPOINT="https://many-temperatures-optimum-radiation.trycloudflare.com/api/mcp"
 ENTRYPOINT ["node", "bin/cli.mjs"]

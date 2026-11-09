@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CapabilityMap Nexus — Capability Comparison Matrix</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+</head>
+<body class="bg-transparent text-[var(--foreground)] antialiased p-3 sm:p-5 font-sans">
+
+  <div class="max-w-6xl mx-auto space-y-4">
+    <!-- Header / Brand Card -->
+    <header class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--primary)] text-white font-bold text-sm shadow-sm">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </span>
+            <h1 class="text-lg sm:text-xl font-bold tracking-tight text-[var(--foreground)]">
+              CapabilityMap Nexus <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--accent)] font-medium text-[var(--foreground)] ml-1 border border-[var(--border)]">Matrix v1.0</span>
+            </h1>
+          </div>
+          <p class="text-xs sm:text-sm text-[var(--muted-foreground)] mt-1">
+            Side-by-side trade-off matrix (`compare_projects`) across 666+ manifest-verified repos with 96.4% token reduction.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2 self-start md:self-auto">
+          <a href="https://www.paypal.com/paypalme/Hadinkof/19EUR" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white transition-colors shadow-sm">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.004.521 5.333.243 5.72.243h7.722c3.754 0 6.413 1.956 5.86 5.845-.398 2.802-2.186 4.394-4.847 4.394H11.23l-1.076 7.647-.078.408h-3zm14.15-13.84c-.49 3.447-2.686 5.4-5.955 5.4h-3.95l-1.32 9.387a.788.788 0 0 1-.78.683H4.6a.64.64 0 0 1-.633-.74L7.074 1.13c.06-.38.39-.658.775-.658h7.722c3.754 0 6.413 1.956 5.86 5.845z"/></svg>
+            <span>Upgrade Pro (€19/mo)</span>
+          </a>
+          <button id="resetSelectionBtn" class="px-3 py-1.5 text-xs font-medium rounded-lg border border-[var(--border)] hover:bg-[var(--accent)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+            Reset Matrix
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls: Category Filter & Project Checkboxes -->
+      <div class="mt-4 pt-4 border-t border-[var(--border)] grid grid-cols-1 lg:grid-cols-12 gap-3 text-xs">
+        <div class="lg:col-span-4">
+          <label class="block font-medium text-[var(--muted-foreground)] mb-1">Filter by Category</label>
+          <select id="categoryFilter" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-lg px-2.5 py-1.5 text-xs text-[var(--foreground)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)]">
+            <option value="all">All Categories (15 Domains)</option>
+            <option value="ai-llms-agents">AI, LLMs & Agents</option>
+            <option value="developer-tools">Developer Tools & Linters</option>
+            <option value="databases-storage-search">Databases, Storage & Vector Search</option>
+            <option value="linux-os-boot">Linux, OS & Bootable Media</option>
+          </select>
+        </div>
+
+        <div class="lg:col-span-8">
+          <label class="block font-medium text-[var(--muted-foreground)] mb-1">Select Candidate Projects to Compare (Max 4)</label>
+          <div id="projectPills" class="flex flex-wrap gap-1.5">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Side-by-Side Comparison Matrix Table Card -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-sm overflow-hidden">
+      <div class="p-3 sm:p-4 bg-[var(--background)]/60 border-b border-[var(--border)] flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <h2 class="text-sm font-semibold text-[var(--foreground)]">Side-by-Side Comparison Engine</h2>
+        </div>
+        <div class="text-xs text-[var(--muted-foreground)] flex items-center gap-3">
+          <span id="activeProjectCount" class="font-medium text-[var(--foreground)]">3 Selected</span>
+          <span class="hidden sm:inline">|</span>
+          <span class="hidden sm:inline text-emerald-500 font-medium">96.4% Token Reduction Active</span>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-[var(--card)] text-[var(--muted-foreground)] border-b border-[var(--border)]">
+              <th class="p-3 font-semibold uppercase tracking-wider w-40 min-w-[140px]">Metric / Factor</th>
+              <!-- Project Columns Injected via JS -->
+              <th id="colHeader0" class="p-3 font-semibold min-w-[180px]"></th>
+              <th id="colHeader1" class="p-3 font-semibold min-w-[180px]"></th>
+              <th id="colHeader2" class="p-3 font-semibold min-w-[180px]"></th>
+              <th id="colHeader3" class="p-3 font-semibold min-w-[180px] hidden"></th>
+            </tr>
+          </thead>
+          <tbody id="matrixTableBody" class="divide-y divide-[var(--border)] font-mono text-[13px]">
+            <!-- Table rows generated dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Live Trade-off Insights Summary -->
+      <div class="p-4 bg-[var(--background)]/40 border-t border-[var(--border)]">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)] mb-2 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-amber-500 fill-current" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-2.383-7.218 4.004 4.004 0 017.766 0A4 4 0 0112 14z"/></svg>
+          Nexus Trade-off Analysis & Recommendation
+        </h3>
+        <div id="tradeoffSummary" class="text-xs text-[var(--foreground)] space-y-1.5 leading-relaxed">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Commercial Monetization & Upgrade Teaser Bar -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+        </div>
+        <div>
+          <h4 class="text-xs sm:text-sm font-semibold text-[var(--foreground)]">Need Deep Multi-Architecture Benchmarks?</h4>
+          <p class="text-xs text-[var(--muted-foreground)]">Unlock 666+ repositories, full 8-layer multi-agent research rooms & live quarantine pipeline.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+        <a href="https://github.com/sponsors/Hadinkof" target="_blank" rel="noopener noreferrer"
+           class="flex-1 sm:flex-initial text-center px-3 py-1.5 text-xs font-medium rounded-lg border border-[var(--border)] hover:bg-[var(--accent)] text-[var(--foreground)] transition-colors">
+          Sponsor $149/mo
+        </a>
+        <a href="https://www.paypal.com/paypalme/Hadinkof/19EUR" target="_blank" rel="noopener noreferrer"
+           class="flex-1 sm:flex-initial text-center px-3 py-1.5 text-xs font-semibold rounded-lg bg-[var(--primary)] text-white hover:opacity-90 transition-opacity">
+          Instant Pro Activation (€19)
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Repository Catalog with 8-Factor Scores and Security Verdicts
+    const CATALOG = [
+      {
+        slug: "Hadinkof/capabilitymap-nexus-mcp",
+        name: "CapabilityMap Nexus",
+        category: "ai-llms-agents",
+        stars: 666,
+        license: "MIT",
+        os: ["Linux", "macOS", "Windows", "Docker"],
+        weighted_score: 0.9990,
+        token_reduction: "96.5%",
+        security: "Pass (5-Vectors Clean)",
+        eight_factors: {
+          relevance: 100,
+          evidence: 100,
+          compatibility: 100,
+          freshness: 100,
+          documentation: 100,
+          licensing: 100,
+          community: 99,
+          source_integrity: 100
+        },
+        strengths: "Zero-dependency stdio bridge, 100% test pass, live 5-vector firewall, instant ROI.",
+        weaknesses: "Fast-moving releases require pinned version in CI."
+      },
+      {
+        slug: "fastmcp",
+        name: "FastMCP (jlowin)",
+        category: "ai-llms-agents",
+        stars: 4800,
+        license: "Apache-2.0",
+        os: ["Linux", "macOS", "Windows"],
+        weighted_score: 0.9650,
+        token_reduction: "89.2%",
+        security: "Pass (5-Vectors Clean)",
+        eight_factors: {
+          relevance: 98,
+          evidence: 96,
+          compatibility: 97,
+          freshness: 98,
+          documentation: 96,
+          licensing: 98,
+          community: 92,
+          source_integrity: 95
+        },
+        strengths: "High ergonomics for Python developers building fast MCP prototypes.",
+        weaknesses: "Python-only runtime, heavier Docker image footprint."
+      },
+      {
+        slug: "modelcontextprotocol/sdk",
+        name: "Official TypeScript MCP SDK",
+        category: "ai-llms-agents",
+        stars: 14200,
+        license: "MIT",
+        os: ["Linux", "macOS", "Windows"],
+        weighted_score: 0.9890,
+        token_reduction: "96.4%",
+        security: "Pass (5-Vectors Clean)",
+        eight_factors: {
+          relevance: 100,
+          evidence: 99,
+          compatibility: 98,
+          freshness: 99,
+          documentation: 97,
+          licensing: 100,
+          community: 99,
+          source_integrity: 99
+        },
+        strengths: "Canonical reference implementation directly maintained by Anthropic/MCP org.",
+        weaknesses: "Requires external packaging and plumbing for enterprise security firewalls."
+      },
+      {
+        slug: "langchain-ai/langchain",
+        name: "LangChain",
+        category: "ai-llms-agents",
+        stars: 97800,
+        license: "MIT",
+        os: ["Linux", "macOS", "Windows"],
+        weighted_score: 0.9500,
+        token_reduction: "91.5%",
+        security: "Warning (High Dependency Attack Surface)",
+        eight_factors: {
+          relevance: 96,
+          evidence: 95,
+          compatibility: 95,
+          freshness: 97,
+          documentation: 94,
+          licensing: 100,
+          community: 99,
+          source_integrity: 84
+        },
+        strengths: "Vast ecosystem of integrations and prompt templates.",
+        weaknesses: "High token consumption per tool execution, deep nested call stacks."
+      },
+      {
+        slug: "astral-sh/uv",
+        name: "uv (Astral)",
+        category: "developer-tools",
+        stars: 48900,
+        license: "MIT / Apache-2.0",
+        os: ["Linux", "macOS", "Windows"],
+        weighted_score: 0.9850,
+        token_reduction: "98.4%",
+        security: "Pass (5-Vectors Clean)",
+        eight_factors: {
+          relevance: 99,
+          evidence: 99,
+          compatibility: 99,
+          freshness: 99,
+          documentation: 98,
+          licensing: 100,
+          community: 98,
+          source_integrity: 96
+        },
+        strengths: "10-100x faster Python package installation in Rust.",
+        weaknesses: "Focused purely on Python environment lifecycle."
+      },
+      {
+        slug: "qdrant/qdrant",
+        name: "Qdrant Vector Database",
+        category: "databases-storage-search",
+        stars: 23100,
+        license: "Apache-2.0",
+        os: ["Linux", "macOS", "Windows"],
+        weighted_score: 0.9710,
+        token_reduction: "97.1%",
+        security: "Pass (5-Vectors Clean)",
+        eight_factors: {
+          relevance: 99,
+          evidence: 98,
+          compatibility: 97,
+          freshness: 98,
+          documentation: 97,
+          licensing: 98,
+          community: 96,
+          source_integrity: 94
+        },
+        strengths: "High-performance Rust vector engine with payload filtering.",
+        weaknesses: "Requires dedicated memory allocation for large vector indexes."
+      },
+      {
+        slug: "pbatard/rufus",
+        name: "Rufus Bootable USB",
+        category: "linux-os-boot",
+        stars: 31200,
+        license: "GPL-3.0",
+        os: ["Windows"],
+        weighted_score: 0.9555,
+        token_reduction: "94.2%",
+        security: "Pass (5-Vectors Clean)",
+        eight_factors: {
+          relevance: 98,
+          evidence: 95,
+          compatibility: 99,
+          freshness: 92,
+          documentation: 94,
+          licensing: 90,
+          community: 96,
+          source_integrity: 96
+        },
+        strengths: "Industry standard for fast, reliable bootable ISO creation.",
+        weaknesses: "Windows-only native binary."
+      }
+    ];
+
+    // State
+    let selectedSlugs = ["fastmcp", "modelcontextprotocol/sdk", "langchain-ai/langchain"];
+    let currentCategory = "all";
+
+    function init() {
+      renderPills();
+      renderMatrix();
+      setupEvents();
+    }
+
+    function setupEvents() {
+      document.getElementById("categoryFilter").addEventListener("change", (e) => {
+        currentCategory = e.target.value;
+        renderPills();
+      });
+
+      document.getElementById("resetSelectionBtn").addEventListener("click", () => {
+        selectedSlugs = ["fastmcp", "modelcontextprotocol/sdk", "langchain-ai/langchain"];
+        currentCategory = "all";
+        document.getElementById("categoryFilter").value = "all";
+        renderPills();
+        renderMatrix();
+      });
+    }
+
+    function renderPills() {
+      const container = document.getElementById("projectPills");
+      container.innerHTML = "";
+
+      const filtered = currentCategory === "all" 
+        ? CATALOG 
+        : CATALOG.filter(p => p.category === currentCategory);
+
+      filtered.forEach(proj => {
+        const isSelected = selectedSlugs.includes(proj.slug);
+        const pill = document.createElement("button");
+        pill.className = `px-2.5 py-1 rounded-md text-xs font-medium border transition-all ${
+          isSelected 
+            ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-xs" 
+            : "bg-[var(--background)] text-[var(--foreground)] border-[var(--border)] hover:bg-[var(--accent)]"
+        }`;
+        pill.innerHTML = `<span>${proj.name}</span> <span class="opacity-70 text-[11px]">(${proj.stars.toLocaleString()}★)</span>`;
+        
+        pill.addEventListener("click", () => {
+          toggleProject(proj.slug);
+        });
+
+        container.appendChild(pill);
+      });
+    }
+
+    function toggleProject(slug) {
+      if (selectedSlugs.includes(slug)) {
+        if (selectedSlugs.length > 2) {
+          selectedSlugs = selectedSlugs.filter(s => s !== slug);
+        } else {
+          alert("Please keep at least 2 projects selected for comparison.");
+          return;
+        }
+      } else {
+        if (selectedSlugs.length >= 4) {
+          selectedSlugs.shift(); // remove oldest to maintain max 4
+        }
+        selectedSlugs.push(slug);
+      }
+      renderPills();
+      renderMatrix();
+    }
+
+    function renderMatrix() {
+      document.getElementById("activeProjectCount").innerText = `${selectedSlugs.length} Projects Selected`;
+      const activeProjects = selectedSlugs.map(s => CATALOG.find(p => p.slug === s)).filter(Boolean);
+
+      // Render Headers
+      for (let i = 0; i < 4; i++) {
+        const th = document.getElementById(`colHeader${i}`);
+        if (i < activeProjects.length) {
+          const proj = activeProjects[i];
+          th.classList.remove("hidden");
+          th.innerHTML = `
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-[var(--foreground)] truncate">${proj.name}</span>
+              <button onclick="removeProject('${proj.slug}')" class="text-[var(--muted-foreground)] hover:text-red-500 font-bold ml-1">✕</button>
+            </div>
+            <div class="text-[11px] font-normal text-[var(--muted-foreground)] truncate">${proj.slug}</div>
+          `;
+        } else {
+          th.classList.add("hidden");
+          th.innerHTML = "";
+        }
+      }
+
+      // Render Rows
+      const tbody = document.getElementById("matrixTableBody");
+      tbody.innerHTML = "";
+
+      const rows = [
+        { label: "Overall Score", key: "score", format: p => `<span class="px-2 py-0.5 rounded font-bold ${p.weighted_score >= 0.98 ? 'bg-emerald-500/20 text-emerald-400' : 'bg-blue-500/20 text-blue-400'}">${(p.weighted_score * 100).toFixed(1)} / 100</span>` },
+        { label: "Stars", key: "stars", format: p => `${p.stars.toLocaleString()} ★` },
+        { label: "License", key: "license", format: p => `<span class="px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">${p.license}</span>` },
+        { label: "OS Support", key: "os", format: p => p.os.join(", ") },
+        { label: "Token Reduction", key: "tokens", format: p => `<span class="text-emerald-500 font-semibold">${p.token_reduction}</span>` },
+        { label: "Firewall Verdict", key: "security", format: p => {
+          const isPass = p.security.includes("Pass");
+          return `<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs ${isPass ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/30' : 'bg-amber-500/10 text-amber-500 border border-amber-500/30'}">${isPass ? '✓' : '⚠'} ${p.security}</span>`;
+        }},
+        { label: "Relevance Factor", key: "f_rel", format: p => renderProgressBar(p.eight_factors.relevance) },
+        { label: "Evidence Quality", key: "f_ev", format: p => renderProgressBar(p.eight_factors.evidence) },
+        { label: "Compatibility", key: "f_comp", format: p => renderProgressBar(p.eight_factors.compatibility) },
+        { label: "Freshness / Velocity", key: "f_fresh", format: p => renderProgressBar(p.eight_factors.freshness) },
+        { label: "Docs Completeness", key: "f_docs", format: p => renderProgressBar(p.eight_factors.documentation) },
+        { label: "Licensing Hygiene", key: "f_lic", format: p => renderProgressBar(p.eight_factors.licensing) },
+        { label: "Community Signal", key: "f_comm", format: p => renderProgressBar(p.eight_factors.community) },
+        { label: "Source Integrity", key: "f_src", format: p => renderProgressBar(p.eight_factors.source_integrity) }
+      ];
+
+      rows.forEach(r => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-[var(--accent)]/30 transition-colors";
+        
+        let colsHtml = `<td class="p-3 font-medium text-[var(--muted-foreground)] font-sans text-xs">${r.label}</td>`;
+        activeProjects.forEach((proj, idx) => {
+          colsHtml += `<td class="p-3 text-[var(--foreground)]">${r.format(proj)}</td>`;
+        });
+
+        tr.innerHTML = colsHtml;
+        tbody.appendChild(tr);
+      });
+
+      renderTradeoffSummary(activeProjects);
+    }
+
+    function renderProgressBar(val) {
+      const color = val >= 95 ? "bg-emerald-500" : val >= 90 ? "bg-blue-500" : "bg-amber-500";
+      return `
+        <div class="flex items-center gap-2">
+          <div class="w-16 sm:w-20 bg-[var(--background)] rounded-full h-1.5 overflow-hidden border border-[var(--border)]">
+            <div class="${color} h-1.5 rounded-full" style="width: ${val}%"></div>
+          </div>
+          <span class="text-xs text-[var(--muted-foreground)]">${val}</span>
+        </div>
+      `;
+    }
+
+    function renderTradeoffSummary(activeProjects) {
+      const summaryBox = document.getElementById("tradeoffSummary");
+      let bestProject = [...activeProjects].sort((a,b) => b.weighted_score - a.weighted_score)[0];
+      
+      let html = `<p>• <strong class="text-[var(--foreground)]">Top Pick:</strong> <span class="text-emerald-500 font-semibold">${bestProject.name}</span> leads with a weighted score of <span class="underline">${(bestProject.weighted_score*100).toFixed(1)}%</span> and ${bestProject.token_reduction} prompt token reduction.</p>`;
+      
+      activeProjects.forEach(p => {
+        html += `<p>• <span class="font-medium text-[var(--foreground)]">${p.name}:</span> <span class="text-[var(--muted-foreground)]">Key Strength:</span> ${p.strengths} <span class="text-[var(--muted-foreground)]">Trade-off:</span> ${p.weaknesses}</p>`;
+      });
+
+      summaryBox.innerHTML = html;
+    }
+
+    window.removeProject = function(slug) {
+      if (selectedSlugs.length <= 2) {
+        alert("Must maintain at least 2 projects in the comparison matrix.");
+        return;
+      }
+      selectedSlugs = selectedSlugs.filter(s => s !== slug);
+      renderPills();
+      renderMatrix();
+    };
+
+    // Run on mount
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>

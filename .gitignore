@@ -1,0 +1,5 @@
+node_modules/
+.agents/
+.teamwork/
+*.log
+.DS_Store

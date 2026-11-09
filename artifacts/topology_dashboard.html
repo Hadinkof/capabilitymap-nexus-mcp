@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CapabilityMap Nexus — Capability Topology & Monetization</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+</head>
+<body class="bg-transparent text-[var(--foreground)] antialiased p-3 sm:p-5 font-sans">
+
+  <div class="max-w-6xl mx-auto space-y-4">
+    <!-- Header / Brand Card -->
+    <header class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--primary)] text-white font-bold text-sm shadow-sm">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+            </span>
+            <h1 class="text-lg sm:text-xl font-bold tracking-tight text-[var(--foreground)]">
+              Capability Topology & Monetization <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--accent)] font-medium text-[var(--foreground)] ml-1 border border-[var(--border)]">666+ Verified</span>
+            </h1>
+          </div>
+          <p class="text-xs sm:text-sm text-[var(--muted-foreground)] mt-1">
+            Browse 15 engineering taxonomy categories, simulate token cost savings, and provision commercial API keys.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <a href="https://github.com/sponsors/Hadinkof" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-[var(--border)] hover:bg-[var(--accent)] text-[var(--foreground)] transition-colors">
+            <svg class="w-3.5 h-3.5 fill-current text-rose-500" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>GitHub Sponsor ($149)</span>
+          </a>
+          <a href="https://www.paypal.com/paypalme/Hadinkof/19EUR" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white transition-colors shadow-sm">
+            <span>Activate Pro (€19)</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Interactive Token Savings & ROI Calculator Card -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+        <div>
+          <h2 class="text-sm font-bold text-[var(--foreground)] uppercase tracking-wider flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-500 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Interactive Token Savings & Net ROI Calculator
+          </h2>
+          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+            Compare raw unindexed GitHub API scraping (5,000 tokens/task) vs Nexus Manifest Precision (185 tokens/task).
+          </p>
+        </div>
+        <div class="text-right">
+          <div class="text-xs text-[var(--muted-foreground)]">Token Reduction Efficiency</div>
+          <div class="text-lg font-extrabold text-emerald-500 font-mono">96.4% Saved</div>
+        </div>
+      </div>
+
+      <!-- Slider Control -->
+      <div class="bg-[var(--background)]/60 border border-[var(--border)] rounded-xl p-4 space-y-3">
+        <div class="flex items-center justify-between text-xs">
+          <label for="taskSlider" class="font-semibold text-[var(--foreground)]">Monthly Engineering Capability Tasks / Queries:</label>
+          <span id="sliderValue" class="font-mono font-bold text-sm text-[var(--primary)]">1,000 tasks/mo</span>
+        </div>
+        <input type="range" id="taskSlider" min="100" max="10000" step="100" value="1000"
+               class="w-full h-2 bg-[var(--card)] rounded-lg appearance-none cursor-pointer accent-[var(--primary)] border border-[var(--border)]">
+        <div class="flex justify-between text-[11px] text-[var(--muted-foreground)] font-mono">
+          <span>100 tasks (Free Tier)</span>
+          <span>1,000 tasks</span>
+          <span>5,000 tasks</span>
+          <span>10,000 tasks (Swarm Tier)</span>
+        </div>
+      </div>
+
+      <!-- Live ROI Comparison Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 text-center font-mono">
+        <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+          <div class="text-[11px] text-[var(--muted-foreground)] font-sans uppercase">Baseline LLM Cost</div>
+          <div id="baselineCost" class="text-xl font-bold text-red-400 mt-1">$59.40</div>
+          <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5 font-sans">5M tokens @ $11.88/M</div>
+        </div>
+
+        <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+          <div class="text-[11px] text-[var(--muted-foreground)] font-sans uppercase">Nexus Pro Subscription</div>
+          <div class="text-xl font-bold text-emerald-400 mt-1">€19.00</div>
+          <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5 font-sans">185k tokens + 25k quota</div>
+        </div>
+
+        <div class="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/30">
+          <div class="text-[11px] text-emerald-400 font-sans uppercase font-bold">Net Financial Return</div>
+          <div id="netRoiMultiple" class="text-xl font-extrabold text-emerald-400 mt-1">3.1x ROI</div>
+          <div id="dollarSaved" class="text-[11px] text-emerald-300/80 mt-0.5 font-sans font-medium">$40.40 saved / mo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15-Category Capability Topology Explorer Grid -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 shadow-sm">
+      <div class="flex items-center justify-between mb-3">
+        <div>
+          <h2 class="text-sm font-bold text-[var(--foreground)] uppercase tracking-wider">
+            15 Engineering Capability Categories
+          </h2>
+          <p class="text-xs text-[var(--muted-foreground)]">Click any domain to inspect indexed verified repositories and sub-capabilities.</p>
+        </div>
+        <span class="text-xs font-mono px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">
+          666 Repos Total
+        </span>
+      </div>
+
+      <div id="categoryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Category Detail Drawer -->
+      <div id="categoryDetailBox" class="mt-4 p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div>
+          <span class="font-bold text-[var(--foreground)]" id="detailCatName">AI, LLMs & agents</span>
+          <span class="text-[var(--muted-foreground)] ml-2" id="detailCatCount">18 Repositories</span>
+          <div class="text-[var(--muted-foreground)] text-[11px] mt-0.5" id="detailCatSub">Sub-capabilities: MCP Servers, Agent Tooling</div>
+        </div>
+        <button onclick="simulateSearch()" class="px-3 py-1 bg-[var(--accent)] hover:bg-[var(--border)] text-[var(--foreground)] rounded-lg text-xs font-medium transition-colors">
+          Search Category in Nexus
+        </button>
+      </div>
+    </div>
+
+    <!-- Commercial Monetization Tiers Grid -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 shadow-sm">
+      <div class="text-center max-w-xl mx-auto mb-5">
+        <h2 class="text-sm sm:text-base font-bold text-[var(--foreground)] uppercase tracking-wider">Commercial Plans & Autonomous Swarm Tiers</h2>
+        <p class="text-xs text-[var(--muted-foreground)] mt-1">Direct instant upgrade links with PayPal and GitHub Sponsors checkout.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+        
+        <!-- Tier 1: Free -->
+        <div class="bg-[var(--background)]/60 border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-[var(--muted-foreground)] uppercase">Community</span>
+              <span class="text-xs font-mono font-bold text-[var(--foreground)]">€0</span>
+            </div>
+            <div class="text-lg font-bold text-[var(--foreground)] mt-1">Free Sandbox</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">100 req/day (750/mo)</div>
+            <ul class="text-xs text-[var(--muted-foreground)] space-y-1.5 mt-3">
+              <li class="flex items-center gap-1.5">✓ Top-3 ranked repos</li>
+              <li class="flex items-center gap-1.5">✓ Stdio bridge read tools</li>
+              <li class="flex items-center gap-1.5">✓ Local firewall check</li>
+            </ul>
+          </div>
+          <button onclick="selectTier('Community Free')" class="mt-4 w-full py-1.5 text-xs font-medium rounded-lg border border-[var(--border)] hover:bg-[var(--accent)] text-[var(--foreground)] transition-colors">
+            Current Tier
+          </button>
+        </div>
+
+        <!-- Tier 2: Pro (Popular) -->
+        <div class="bg-[var(--background)] border-2 border-emerald-500 rounded-xl p-4 flex flex-col justify-between relative shadow-sm">
+          <span class="absolute -top-2.5 right-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500 text-white uppercase tracking-wider">
+            Most Popular
+          </span>
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-500 uppercase">Nexus Pro</span>
+              <span class="text-xs font-mono font-bold text-[var(--foreground)]">€19 / mo</span>
+            </div>
+            <div class="text-lg font-bold text-[var(--foreground)] mt-1">Indie Developer</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">25,000 req/mo</div>
+            <ul class="text-xs text-[var(--muted-foreground)] space-y-1.5 mt-3">
+              <li class="flex items-center gap-1.5 text-[var(--foreground)]">✓ All 666+ verified repos</li>
+              <li class="flex items-center gap-1.5 text-[var(--foreground)]">✓ 8-factor score breakdown</li>
+              <li class="flex items-center gap-1.5 text-[var(--foreground)]">✓ Live API ingest quarantine</li>
+              <li class="flex items-center gap-1.5 text-[var(--foreground)]">✓ Low-latency MCP gateway</li>
+            </ul>
+          </div>
+          <a href="https://www.paypal.com/paypalme/Hadinkof/19EUR" target="_blank" rel="noopener noreferrer"
+             class="mt-4 w-full text-center py-1.5 text-xs font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white transition-colors shadow-sm">
+            Upgrade with PayPal (€19)
+          </a>
+        </div>
+
+        <!-- Tier 3: Swarm -->
+        <div class="bg-[var(--background)]/60 border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-purple-400 uppercase">Team & Swarm</span>
+              <span class="text-xs font-mono font-bold text-[var(--foreground)]">€99 / mo</span>
+            </div>
+            <div class="text-lg font-bold text-[var(--foreground)] mt-1">Autonomous Swarms</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">250,000 req/mo</div>
+            <ul class="text-xs text-[var(--muted-foreground)] space-y-1.5 mt-3">
+              <li class="flex items-center gap-1.5">✓ Bulk JSON dataset export</li>
+              <li class="flex items-center gap-1.5">✓ Private org indexing</li>
+              <li class="flex items-center gap-1.5">✓ 8-Layer Research Rooms</li>
+              <li class="flex items-center gap-1.5">✓ Webhook breach alerts</li>
+            </ul>
+          </div>
+          <a href="https://www.paypal.com/paypalme/Hadinkof/99EUR" target="_blank" rel="noopener noreferrer"
+             class="mt-4 w-full text-center py-1.5 text-xs font-medium rounded-lg border border-[var(--border)] hover:bg-[var(--accent)] text-[var(--foreground)] transition-colors">
+            Subscribe PayPal (€99)
+          </a>
+        </div>
+
+        <!-- Tier 4: Partner Sponsor Slot -->
+        <div class="bg-[var(--background)]/60 border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-400 uppercase">Verified Sponsor</span>
+              <span class="text-xs font-mono font-bold text-[var(--foreground)]">$149 / mo</span>
+            </div>
+            <div class="text-lg font-bold text-[var(--foreground)] mt-1">Partner Slot</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">50k req + Partner Spot</div>
+            <ul class="text-xs text-[var(--muted-foreground)] space-y-1.5 mt-3">
+              <li class="flex items-center gap-1.5">✓ Verified Partner badge</li>
+              <li class="flex items-center gap-1.5">✓ Direct exposure to agents</li>
+              <li class="flex items-center gap-1.5">✓ Continuous audit seal</li>
+              <li class="flex items-center gap-1.5">✓ GitHub Sponsors direct</li>
+            </ul>
+          </div>
+          <a href="https://github.com/sponsors/Hadinkof" target="_blank" rel="noopener noreferrer"
+             class="mt-4 w-full text-center py-1.5 text-xs font-medium rounded-lg border border-[var(--border)] hover:bg-[var(--accent)] text-[var(--foreground)] transition-colors">
+            Become a Sponsor ($149)
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Self-Serve Instant Trial Key Generator Simulation -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] flex items-center gap-2">
+            <span>Instant Self-Serve Trial Key Provisioning</span>
+            <span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">Zero Credit Card</span>
+          </h3>
+          <p class="text-xs text-[var(--muted-foreground)]">Simulate provisioning an official `nxs_trial_<hex>` key with 100 free query credits.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2">
+        <input type="email" id="trialEmailInput" placeholder="developer@example.com" value="developer@nexus-client.internal"
+               class="flex-1 bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-1.5 text-xs text-[var(--foreground)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)] font-mono">
+        <button id="genKeyBtn" class="px-4 py-1.5 bg-[var(--primary)] text-white text-xs font-semibold rounded-lg hover:opacity-90 transition-opacity">
+          Generate Trial Key
+        </button>
+      </div>
+
+      <!-- Generated Key Output Box -->
+      <div id="generatedKeyBox" class="mt-3 p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] font-mono text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div class="flex items-center gap-2 truncate">
+          <span class="text-[var(--muted-foreground)]">Active Key:</span>
+          <span id="activeKeyVal" class="text-emerald-400 font-bold truncate">nxs_trial_c7e3a9f041b28e5d</span>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="copyKey()" id="copyKeyBtn" class="px-2.5 py-1 rounded bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] text-[var(--foreground)] text-[11px] transition-colors">
+            Copy Key
+          </button>
+          <span class="text-[11px] text-[var(--muted-foreground)] font-sans">100 Credits Loaded</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 15 Taxonomy Categories
+    const CATEGORIES = [
+      { id: 'cat-1', name: 'AI, LLMs & agents', count: 18, sub: 'MCP Servers, Agent Tooling' },
+      { id: 'cat-2', name: 'APIs & integrations', count: 14, sub: 'REST Connectors, Webhooks' },
+      { id: 'cat-3', name: 'Automation & orchestration', count: 11, sub: 'Workflows, Schedulers' },
+      { id: 'cat-4', name: 'Browser & web', count: 9, sub: 'Scraping, Headless Automation' },
+      { id: 'cat-5', name: 'Cloud & hosting', count: 8, sub: 'Serverless, Infra Provisioning' },
+      { id: 'cat-6', name: 'Databases, storage & search', count: 19, sub: 'Vector DBs, Cache' },
+      { id: 'cat-7', name: 'Developer tools', count: 22, sub: 'Linters, CLI Utilities' },
+      { id: 'cat-8', name: 'Documents, media & data', count: 15, sub: 'PDF Parsers, Image Transform' },
+      { id: 'cat-9', name: 'Hardware & embedded', count: 12, sub: 'IoT, Serial, Microcontrollers' },
+      { id: 'cat-10', name: 'Linux, OS & boot', count: 16, sub: 'Kernel, Distros, Live USB' },
+      { id: 'cat-11', name: 'Networking & remote', count: 14, sub: 'Tunnels, VPN, WireGuard' },
+      { id: 'cat-12', name: 'Security, privacy & auth', count: 10, sub: 'Auth, Pen-testing, Firewalls' },
+      { id: 'cat-13', name: 'Mobile & Android', count: 11, sub: 'Emulation, Mobile SDKs' },
+      { id: 'cat-14', name: 'Windows & desktop', count: 13, sub: 'GUI, Win32, PowerShell' },
+      { id: 'cat-15', name: 'Monitoring & observability', count: 7, sub: 'Metrics, Traces, Telemetry' }
+    ];
+
+    let selectedCat = CATEGORIES[0];
+
+    function init() {
+      renderCategories();
+      setupSlider();
+      setupKeyGen();
+    }
+
+    function renderCategories() {
+      const grid = document.getElementById("categoryGrid");
+      grid.innerHTML = "";
+
+      CATEGORIES.forEach(cat => {
+        const isSelected = selectedCat.id === cat.id;
+        const card = document.createElement("button");
+        card.className = `p-3 text-left rounded-xl border transition-all ${
+          isSelected 
+            ? "bg-[var(--primary)]/10 border-[var(--primary)] shadow-xs" 
+            : "bg-[var(--background)]/60 border-[var(--border)] hover:bg-[var(--accent)]"
+        }`;
+        
+        card.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-xs text-[var(--foreground)] truncate">${cat.name}</span>
+            <span class="text-[11px] font-mono text-[var(--muted-foreground)] shrink-0">${cat.count} repos</span>
+          </div>
+          <div class="text-[11px] text-[var(--muted-foreground)] mt-1 truncate">${cat.sub}</div>
+        `;
+
+        card.addEventListener("click", () => {
+          selectedCat = cat;
+          renderCategories();
+          updateCatDetail();
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    function updateCatDetail() {
+      document.getElementById("detailCatName").innerText = selectedCat.name;
+      document.getElementById("detailCatCount").innerText = `${selectedCat.count} Repositories Indexed`;
+      document.getElementById("detailCatSub").innerText = `Sub-capabilities: ${selectedCat.sub}`;
+    }
+
+    function setupSlider() {
+      const slider = document.getElementById("taskSlider");
+      slider.addEventListener("input", (e) => {
+        const tasks = parseInt(e.target.value, 10);
+        document.getElementById("sliderValue").innerText = `${tasks.toLocaleString()} tasks/mo`;
+        calculateRoi(tasks);
+      });
+      calculateRoi(1000);
+    }
+
+    function calculateRoi(tasks) {
+      // 5,000 tokens unindexed baseline @ $11.88 / 1M tokens ($0.00001188 per token)
+      const baselineTokens = tasks * 5000;
+      const baselineCostUSD = (baselineTokens / 1000000) * 11.88;
+
+      // Nexus Pro cost is €19 (approx $20.50 USD)
+      const nexusCostUSD = 20.50;
+      const netSavingsUSD = Math.max(0, baselineCostUSD - nexusCostUSD);
+      const roiMultiple = (baselineCostUSD / nexusCostUSD).toFixed(1);
+
+      document.getElementById("baselineCost").innerText = `$${baselineCostUSD.toFixed(2)}`;
+      document.getElementById("netRoiMultiple").innerText = `${roiMultiple}x ROI`;
+      document.getElementById("dollarSaved").innerText = `$${netSavingsUSD.toFixed(2)} saved / mo`;
+    }
+
+    function setupKeyGen() {
+      document.getElementById("genKeyBtn").addEventListener("click", () => {
+        const hex = Array.from(crypto.getRandomValues(new Uint8Array(8)))
+          .map(b => b.toString(16).padStart(2, '0')).join('');
+        const key = `nxs_trial_${hex}`;
+        document.getElementById("activeKeyVal").innerText = key;
+        const copyBtn = document.getElementById("copyKeyBtn");
+        copyBtn.innerText = "Copy Key";
+      });
+    }
+
+    window.copyKey = function() {
+      const key = document.getElementById("activeKeyVal").innerText;
+      navigator.clipboard.writeText(key).then(() => {
+        const copyBtn = document.getElementById("copyKeyBtn");
+        copyBtn.innerText = "Copied!";
+        setTimeout(() => { copyBtn.innerText = "Copy Key"; }, 2000);
+      });
+    };
+
+    window.simulateSearch = function() {
+      alert(`Querying CapabilityMap Nexus stdio engine for category: "${selectedCat.name}"...\nFound ${selectedCat.count} verified repositories with 96.4% token reduction.`);
+    };
+
+    window.selectTier = function(tierName) {
+      alert(`Active selection: ${tierName}. To upgrade, use the Pro (€19) or Sponsor ($149) checkout buttons.`);
+    };
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
