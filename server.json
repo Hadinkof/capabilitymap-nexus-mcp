@@ -1,6 +1,6 @@
 {
-  "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-11-25/server.json",
-  "name": "io.github.hadinkof/capabilitymap-nexus-mcp",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Hadinkof/capabilitymap-nexus-mcp",
   "version": "1.0.2",
   "description": "Problem-first GitHub Capability Router & Prompt-Injection Firewall MCP Server indexing 751+ manifest-verified repositories across 15 categories with 8 MCP tools and 96.4% LLM token reduction.",
   "repository": {
@@ -12,11 +12,7 @@
   },
   "remotes": [
     {
-      "transport_type": "streamable-http",
-      "url": "https://many-temperatures-optimum-radiation.trycloudflare.com/api/mcp"
-    },
-    {
-      "transport_type": "sse",
+      "type": "streamable-http",
       "url": "https://many-temperatures-optimum-radiation.trycloudflare.com/api/mcp"
     }
   ]
