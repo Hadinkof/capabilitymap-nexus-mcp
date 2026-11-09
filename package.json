@@ -1,7 +1,7 @@
 {
   "name": "capabilitymap-nexus-mcp",
-  "version": "1.0.1",
-  "description": "CapabilityMap Nexus v1.0 \u2014 Verified GitHub Capability Router & Commercial MCP Gateway (666 Repos, 96.4% Token Savings)",
+  "version": "1.0.2",
+  "description": "CapabilityMap Nexus v1.0.2 — Verified GitHub Capability Router & Commercial MCP Gateway (751+ Repos, 8 MCP Tools, 96.4% Token Savings)",
   "homepage": "https://many-temperatures-optimum-radiation.trycloudflare.com",
   "repository": {
     "type": "git",
@@ -22,5 +22,9 @@
   "type": "module",
   "bin": {
     "capabilitymap-nexus-mcp": "./bin/cli.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/cli.test.mjs",
+    "start": "node ./bin/cli.mjs"
   }
 }

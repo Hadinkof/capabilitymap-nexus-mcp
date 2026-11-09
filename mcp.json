@@ -1,11 +1,21 @@
 {
   "schema_version": "2025-11-25",
   "name": "capabilitymap-nexus",
-  "version": "1.0.0",
-  "title": "CapabilityMap Nexus \u2014 Verified GitHub Capability Router & MCP Gateway",
-  "description": "Problem-first capability discovery across 666 manifest-verified GitHub repositories with 96.4% LLM token savings and 100% prompt-injection firewalling.",
+  "version": "1.0.2",
+  "title": "CapabilityMap Nexus v1.0.2 — Verified GitHub Capability Router & MCP Gateway",
+  "description": "Problem-first capability discovery across 751+ manifest-verified GitHub repositories with 8 production MCP tools, 96.4% LLM token savings, and 100% prompt-injection firewalling.",
   "homepage": "https://many-temperatures-optimum-radiation.trycloudflare.com",
   "pricing_url": "https://many-temperatures-optimum-radiation.trycloudflare.com/#pricing",
+  "tools": [
+    "search_capabilities",
+    "get_project_details",
+    "browse_categories",
+    "compare_projects",
+    "report_outcome",
+    "provision_api_key",
+    "get_commercial_tiers",
+    "scan_repository_safety"
+  ],
   "endpoints": {
     "mcp_http": "https://many-temperatures-optimum-radiation.trycloudflare.com/api/mcp",
     "rest_search": "https://many-temperatures-optimum-radiation.trycloudflare.com/api/v1/search",
