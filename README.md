@@ -63,3 +63,21 @@ Add CapabilityMap Nexus to your `mcpServers` configuration:
 | **Manifest-Verified Repositories** | Unverified | **666 Repos (15 Categories)** | **100% Evidence-Backed** |
 | **OS / Platform Mismatch Rate** | `28.5%` | **`0.0%`** | **Zero macOS/Linux Cross-Contamination** |
 | **Prompt-Injection Detection** | `0%` | **100% Precision / 100% Recall** | **5-Vector Heuristic & Canary Quarantine** |
+
+
+### 3. Hosted Glama.ai Gateway Connector
+
+Connect directly via your hosted Glama.ai proxy endpoint with Bearer authentication:
+
+```json
+{
+  "mcpServers": {
+    "agent-nexus": {
+      "url": "https://glama.ai/endpoints/vn7zp23psp/mcp",
+      "headers": {
+        "Authorization": "Bearer <ACCESS_TOKEN>"
+      }
+    }
+  }
+}
+```
